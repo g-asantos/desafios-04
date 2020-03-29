@@ -1,0 +1,285 @@
+@import "https://fonts.googleapis.com/css?family=Roboto&display=swap";
+
+:root {
+    --primary-color: #515F99;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--primary-color);
+}
+
+
+header {
+    background-color: white;
+    width: 100%;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1 {
+    position: absolute;
+    top: 25px;
+    color: #8C0404;
+    border: 5px groove grey;
+}
+.links {
+    font-size: 22px;
+}
+
+.links a + a {
+    margin-left: 32px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #777;
+    position: relative;
+}
+
+.links a.active {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.links a:hover {
+    
+    color: var(--primary-color);
+}
+
+.links a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+}
+
+
+.links a:hover::after {
+    width: 100%;
+    transition: width 200ms ease-in-out;
+}
+
+.card {
+    background-color: white;
+    width: 800px;
+    height: 400px;
+
+    /* espaçamento ao centro */   
+    margin: 45px auto;
+
+    /* grid dividido ao meio */
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr;
+
+    /* sombra */
+    box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.4);
+
+    /* animação */
+    
+    animation: up 200ms ease;
+    
+    border-radius: 15px;
+}
+
+@keyframes up {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.item div:first-child {
+    color:blue;
+    border-top: 1px dotted rgb(136, 133, 133);
+    
+}
+
+.item {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+a.edit{
+    background-color: #FFCC00;
+    border-radius: 4px;
+    margin-top: 18px;
+    font-size: 18px;
+    box-sizing: border-box;
+    display: block;
+    
+}
+
+input[type='url'],
+input[type='text']{
+    border-bottom: 1px solid blue;
+    width: 75%;
+    box-sizing: border-box;
+    
+}
+
+a.edit {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    width: 100px;
+    color: #8C0404;
+}
+
+
+button {
+    background-color: #FFCC00;
+    border-radius: 4px;
+    margin-top: 8px;
+    font-size: 18px;
+    box-sizing: border-box;
+    display: block;
+    width: 100px;
+    position: relative;
+    left: 250px;
+    color: #8C0404;
+}
+
+#form-delete button {
+    background-color: lightcoral;
+    left: 120px;
+    bottom: 29px;
+}
+
+.table-container {
+    display: block;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.table-container table {
+    border-spacing: 0;
+}
+
+.table-container thead tr th {
+    text-align: left;
+}
+
+td, th {
+    padding: 16px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+tbody tr td:first-child {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    align-items: center;
+}
+
+
+tbody tr td:first-child span {
+    width: 40px;
+    height: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 3px 1px 6px -4px black;
+    border: 2px solid white;
+}
+
+tbody tr td:last-child a,
+.table-container > a {
+    background-color: var(--primary-color);
+    padding: 8px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.table-container > a {
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+
+.table-container header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    margin-bottom: 32px;;
+    padding: 0;
+}
+
+
+.table-container header a{
+    width: 120px;
+    margin: 0;
+}
+
+
+
+.table-container header form {
+    display: grid;
+    grid-template-columns: 1fr 120px;
+    align-items: center;
+    grid-gap: 8px;
+}
+
+.table-container header button{
+    margin: 0;
+    position: static;
+}
+
+.table-container header form input{
+    border: 1px solid #eee;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+
+.table-container{
+    display: grid;
+    grid-template: 64px 1fr 16px/ 1fr;
+}
+
+.table-container header {
+    margin: 0;
+    align-self: start;
+}
+
+
+.table-container .pagination {
+    margin: 0;
+    align-self: end;
+    justify-self: center;
+}
+
+
+.pagination a,
+.pagination span {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-right: 16px;
+}
+
+.pagination a:hover {
+    filter: brightness(0.3);
+    border-bottom: 1px solid var(--primary-color);
+}

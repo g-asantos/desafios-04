@@ -1,0 +1,60 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+    <h1>Private Classes</h1>
+    <div class="card table-container">
+    
+        <header>
+            <a class='edit' href="/students/create">New</a>
+            <form action="/students" method="get">
+                <input type="text" name="filter" id="" placeholder='Name or Email' value={{filter}}>
+                <button type="submit">Filter</button>
+            </form>
+
+        </header>
+        
+        
+        <table width='100%'>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Email</th>
+                    <th>School Year</th>
+                    <th>Weekly Workload</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+            {% for student in students %}    
+                <tr>
+                    <td>
+                    <span style='background-image: url({{student.avatar_url}})'></span>
+                    
+                    {{student.name}}</td>
+                    
+                    <td>
+                        <span>{{student.email}}</span>
+                    </td>
+                    <td>
+                        <span>{{student.schoolyear}}</span>
+                    </td>
+                    <td>
+                        <span>{{student.workload}}</span>
+                    </td>
+                    
+                    <td><a href="/students/{{student.id}}">See</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <div class="pagination"
+            data-page={{pagination.page}}
+            data-total={{pagination.total}}
+            data-filter={{filter}}
+        ></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+
+            <div class="item">
+                <div>Avatar URL</div>
+                <div><input type="url" name="avatar_url" placeholder='http://' value='{{teacher.avatar_url}}'></div>
+            </div>
+
+            <div class="item">
+                <div>Name</div>
+                <div><input type="text" name="name" placeholder='João' value='{{teacher.name}}'></div>
+            </div>
+
+            <div class="item">
+                <div>Birth date</div>
+                <div><input type="date" name="birth" value='{{teacher.birth}}'></div>
+            </div>
+
+            <div class="item">
+                <div>Education Level</div>
+                <div>
+                    <select name="school">
+                        <option value="Associate degree" {% if teacher.school == 'Associate degree'  %}
+          selected
+          {% endif %}>Associate degree</option>
+                        <option value="Bachelor's degree" {% if teacher.school == "Bachelor's degree"  %}
+          selected
+          {% endif %}>Bachelor's degree</option>
+                        <option value="Master's degree" {% if teacher.school == "Master's degree"  %}
+          selected
+          {% endif %}>Master's degree</option>
+                        <option value="Doctoral degree" {% if teacher.school == "Doctoral degree"  %}
+          selected
+          {% endif %}>Doctoral degree</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Type of course</div>
+                <div>
+                    <input type="radio" name="classtype" value='Proximate learning' {% if teacher.classtype == 'Proximate learning'  %}checked
+                    {% endif %}>Proximate learning
+                    <input type="radio" name="classtype" value='Distance learning'{% if teacher.classtype == 'Distance learning'  %}checked
+                    {% endif %}>Distance learning
+                </div>
+            </div>
+
+            <div class="item">
+                <div>Services</div>
+                <div><input type="text" name="services" placeholder='Separe disciplinas por virgulas' value='{{teacher.services}}'></div>
+            </div>
+
+            
+
+
+            <button type="submit">Salvar</button>

@@ -1,0 +1,40 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+    <h1>Private Classes</h1>
+    <div class="card">
+        <section class="avatar" style='border-radius: 15px; background: url({{student.avatar_url}}) no-repeat center center / cover'></section>
+        <section class="details">
+
+            <div class="item">
+                <div>Name</div>
+                <div>{{student.name}}</div>
+            </div>
+            
+            <div class="item">
+                <div>Birthday</div>
+                <div>{{student.birth}}</div>
+            </div>
+
+            <div class="item">
+                <div>Email</div>
+                <div>{{student.email}}</div>
+            </div>
+            <div class="item">
+                <div>School Year</div>
+                <div>{{student.schoolyear}}</div>
+            </div>
+            <div class="item">
+                <div>Weekly Workload</div>
+                <div>{{student.workload}}</div>
+            </div>
+            <div class="item">
+                <div>Student of</div>
+                <div>{{student.teacher_name}}</div>
+            </div>
+            
+
+        <a href="/students/{{student.id}}/edit" class='edit'>Editar</a>
+        </section>
+    </div>
+{% endblock %}

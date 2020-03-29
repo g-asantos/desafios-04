@@ -1,0 +1,27 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+    <h1>Private Classes</h1>
+
+    <div class="card">
+
+        <section class="avatar" style='border-radius: 15px; background: url({{teacher.avatar_url}}) no-repeat center center / cover; max-height:400px'></section>
+        <section class="details">
+
+            <form method='POST' action='/teachers?_method=PUT'>
+
+                {% include 'teachers/fields.njk'%}
+
+                <input type="hidden" name="id" value={{teacher.id}}>
+
+            </form>
+
+            <form id='form-delete' action="/teachers?_method=DELETE" method="post">
+                <button type="submit">Deletar</button>
+                <input type="hidden" name="id" value={{teacher.id}}>
+            </form>
+
+        </section>
+    </div>
+{% include 'confirm.njk'%}
+{% endblock %}

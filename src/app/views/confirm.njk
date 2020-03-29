@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+    
+        
+    <script>
+        const formDelete = document.querySelector('#form-delete')
+        formDelete.addEventListener('submit', function(event){
+            const confirmation = confirm('Deseja deletar?')
+            if (!confirmation){
+                event.preventDefault()
+            }
+        })
+    
+    
+    
+    </script>
+
+    {% block content %}{% endblock %}
+  
+
+</html>
