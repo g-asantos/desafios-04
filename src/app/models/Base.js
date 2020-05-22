@@ -63,7 +63,7 @@ const Base = {
         const query = `INSERT INTO ${this.table} (${keys.join(',')}) VALUES (${values.join(',')})
         RETURNING id`
         
-
+       
         const results = await db.query(query)
         
         return results.rows[0].id
@@ -172,7 +172,7 @@ const Base = {
 
         
         let results = await db.query(query)
-
+        
         return results.rows
 
         

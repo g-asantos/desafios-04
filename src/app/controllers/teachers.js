@@ -8,19 +8,24 @@ module.exports = {
     async index(req, res) {
         let { filter, page, limit } = req.query
 
+
+
+        if(!filter) filter = null
+        
         page = page || 1
         limit = limit || 2
         let offset = limit * (page - 1)
+        
 
-
-        await Teacher.paginate({filter, limit, offset}).then((teachers) =>{
+        await Teacher.paginateTeach({filter,page,limit,offset}).then((teachers) =>{
             
             const pagination = {
-                
-                total: Math.ceil(teachers.total / limit),
+                filter,
+                total: Math.ceil(teachers[0].total / limit),
                 page
+                
             }
-
+            
             return res.render('teachers/index', { teachers, pagination, filter })
         })
 
@@ -33,31 +38,26 @@ module.exports = {
         return res.render('teachers/create')
     },
     async post(req, res) {
-        const keys = Object.keys(req.body)
+        
         let { name, avatar_url, birth, school, classtype, services} = req.body
-        for (key of keys) {
-            if (req.body[key] == '') {
-                return res.send('Please fill all fields')
-            }
-        }
         birth = date(birth).iso
         let created_at = date(Date.now()).iso
-       const teacherId = await Teacher.create({
+
+        let teachers = await Teacher.create({
             name,
-            avatar_url,
             birth,
-            school,
+            school, 
             classtype,
             services,
-            created_at 
+            created_at,
+            avatar_url
        }) 
 
+      
+       
 
-
-
-
-
-            return res.redirect(`/teachers/${teacherId}`)
+       
+        return res.render(`parts/success.njk`)
         
     },
     async show(req, res) {
@@ -86,16 +86,11 @@ module.exports = {
         
     },
     async update(req, res) {
-        const keys = Object.keys(req.body)
+       
         const { name, avatar_url, birth, school, classtype, services} = req.body
 
-        for (key of keys) {
-            if (req.body[key] == '') {
-                return res.send('Please fill all fields')
-            }
-        }
-
-        const teacherId = await Teacher.update(req.body.id, {
+        
+        let teacherId = await Teacher.update(req.body.id, {
             name,
             avatar_url,
             birth: date(birth).iso,
@@ -106,7 +101,7 @@ module.exports = {
        }) 
 
 
-        return res.redirect(`/teachers/${req.body.id}`)
+       return res.render(`parts/success.njk`)
         
     },
     async delete(req, res) {
@@ -114,7 +109,7 @@ module.exports = {
         
         
         await Teacher.delete(req.body.id)
-        return res.redirect(`/teachers/`)
+        return res.render(`parts/success.njk`)
     },
 }
 

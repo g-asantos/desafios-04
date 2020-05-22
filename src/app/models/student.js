@@ -1,6 +1,6 @@
 const db = require('../../config/db')
 const { age, date, grade } = require('../../lib/utils')
-const Base = require('../controllers/Base')
+const Base = require('../models/Base')
 
 Base.init({table: 'students'})
 

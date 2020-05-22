@@ -1,6 +1,6 @@
 const db = require('../../config/db')
 const { age, date, grade } = require('../../lib/utils')
-const Base = require('../controllers/Base')
+const Base = require('../models/Base')
 
 Base.init({table: 'teachers'})
 
@@ -36,10 +36,8 @@ module.exports = {
             callback(results.rows)
         }) 
     },
-    async paginate(params){
+    async paginateTeach(params){
         const { filter, limit, offset } = params
-
-
 
         let query = '',
             filterQuery = '',
@@ -47,7 +45,7 @@ module.exports = {
                 SELECT count(*) FROM teachers
             )AS total`
 
-        if(filter){
+        if(filter != null){
             filterQuery = `
             WHERE teachers.name ILIKE '%${filter}%'
             OR teachers.services ILIKE '%${filter}%'`
@@ -57,7 +55,7 @@ module.exports = {
                 ${filterQuery}
             )AS total`
         }
-
+        
 
         
         query = `
@@ -69,7 +67,7 @@ module.exports = {
 
 
         
-
+        
         let results = await db.query(query)
         
         return results.rows

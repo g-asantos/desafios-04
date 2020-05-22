@@ -1,4 +1,4 @@
-
+            {%import 'parts/messages.njk' as messages%}
             <div class="item">
                 <div>Avatar URL</div>
                 <div><input type="url" name="avatar_url" placeholder='http://' value='{{teacher.avatar_url}}'></div>
@@ -21,12 +21,12 @@
                         <option value="Associate degree" {% if teacher.school == 'Associate degree'  %}
           selected
           {% endif %}>Associate degree</option>
-                        <option value="Bachelor's degree" {% if teacher.school == "Bachelor's degree"  %}
+                        <option value="Bachelors degree" {% if teacher.school == "Bachelors degree"  %}
           selected
-          {% endif %}>Bachelor's degree</option>
-                        <option value="Master's degree" {% if teacher.school == "Master's degree"  %}
+          {% endif %}>Bachelors degree</option>
+                        <option value="Masters degree" {% if teacher.school == "Masters degree"  %}
           selected
-          {% endif %}>Master's degree</option>
+          {% endif %}>Masters degree</option>
                         <option value="Doctoral degree" {% if teacher.school == "Doctoral degree"  %}
           selected
           {% endif %}>Doctoral degree</option>
@@ -53,4 +53,4 @@
             
 
 
-            <button type="submit">Salvar</button>
+            <button type="submit" onclick='Validate.allFields(event)'>Salvar</button>

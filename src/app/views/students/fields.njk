@@ -1,4 +1,4 @@
-
+            {%import 'parts/messages.njk' as messages%}
             <div class="item">
                 <div>Avatar URL</div>
                 <div><input type="url" name="avatar_url" placeholder='http://' value='{{student.avatar_url}}'></div>
@@ -71,4 +71,4 @@
                     </select>
 
 
-            <button type="submit">Salvar</button>
+            <button type="submit" onclick='Validate.allFields(event)'>Salvar</button>

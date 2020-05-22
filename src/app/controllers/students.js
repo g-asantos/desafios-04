@@ -17,7 +17,7 @@ module.exports = {
 
         await Student.paginate({filter, limit, offset}).then((students) =>{
             const pagination = {
-                total: Math.ceil(students.total / limit),
+                total: Math.ceil(students[0].total / limit),
                 page
             }
 
@@ -38,16 +38,12 @@ module.exports = {
         return res.render('students/create', { teacherOptions: options })
     },
     async post(req, res) {
-        const keys = Object.keys(req.body)
+        
         let { name,avatar_url, birth, schoolyear,email,workload,teacher } = req.body
 
 
 
-        for (key of keys) {
-            if (req.body[key] == '') {
-                return res.send('Please fill all fields')
-            }
-        }
+        
         birth = date(birth).iso
         let created_at = date(Date.now()).iso
         let teacher_id = teacher
@@ -65,7 +61,7 @@ module.exports = {
             
             
             
-        return res.redirect(`/students/${studentId}`)
+            return res.render(`parts/success.njk`)
         
     },
     async show(req, res) {
@@ -94,13 +90,9 @@ module.exports = {
         })
     },
     async update(req, res) {
-        const keys = Object.keys(req.body)
+        
         let { name,avatar_url, birth, schoolyear,email,workload,teacher } = req.body
-        for (key of keys) {
-            if (req.body[key] == '') {
-                return res.send('Please fill all fields')
-            }
-        }
+        
         birth = date(birth).iso
         let teacher_id = teacher
         
@@ -120,7 +112,7 @@ module.exports = {
 
 
 
-        return res.redirect(`/students/${req.body.id}`)
+        return res.render(`parts/success.njk`)
         
     },
     async delete(req, res) {
@@ -130,7 +122,7 @@ module.exports = {
         
         
         
-        return res.redirect(`/students/`)
+      return res.render(`parts/success.njk`)
         
     },
 }
